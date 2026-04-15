@@ -1,30 +1,27 @@
-# $(basename $(pwd) | tr '[:lower:]' '[:upper:]')
+# HASHCRACK
 
-## Description
-
-A high-performance tool built with Go.
+**Multi-Algorithm Hash Cracker**
 
 ## Features
 
 - 🚀 Fast and efficient
-- 📦 Single binary, no dependencies
+- 📦 Single binary, no dependencies  
 - 🔧 Easy to use
+- 🔒 Secure by design
 
 ## Installation
 
-\`\`\`bash
-go install github.com/simplestar-992/$(basename $(pwd))@latest
-\`\`\`
+```bash
+git clone https://github.com/simplestar-992/hashcrack.git
+cd hashcrack
+go build -o hashcrack .
+```
 
 ## Usage
 
-\`\`\`bash
-# Basic usage
-$(basename $(pwd)) [options]
-
-# Help
-$(basename $(pwd)) --help
-\`\`\`
+```bash
+./hashcrack --help
+```
 
 ## License
 
