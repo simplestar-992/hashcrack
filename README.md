@@ -1,74 +1,89 @@
-# HASHCRACK
+# HashCrack | Password Hash Identifier & Checker
 
-```
-⚡ hashcrack ⚡
-╔══════════════════╗
-║   HASHCRACK       ║
-╚══════════════════╝
-```
+![Security Tool](https://img.shields.io/badge/Purpose-Hash%20Analysis-red?style=for-the-badge)
+![Go](https://img.shields.io/badge/Go-1.21+-00ADD8?style=for-the-badge&logo=go)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
-> A powerful tool built for modern developers
+---
 
-## ✨ Features
+## Identify & Analyze Password Hashes
 
-- 🚀 Blazing fast performance
-- 💎 Clean and intuitive API
-- 🔧 Zero configuration needed
-- 🛡️ Secure by default
-- 📦 Single binary, no dependencies
+HashCrack helps you identify hash types, check hashes against common password lists, and understand hash security.
 
-## 📥 Installation
+**Perfect for:**
+- Security professionals auditing password databases
+- Developers learning about password storage
+- CTF players solving hash challenges
+- System administrators checking password policies
+
+---
+
+## Features
+
+- 🔍 **Auto-detect** - Identifies 50+ hash types automatically
+- ✅ **Verify** - Check if a hash matches a password
+- 📊 **Analyze** - Understand hash strength and type
+- 🔓 **Wordlist ready** - Test against common password lists
+- ⚡ **Fast** - Concurrent hash checking
+
+---
+
+## Installation
 
 ```bash
 git clone https://github.com/simplestar-992/hashcrack.git
 cd hashcrack
-go build -o hashcrack .
-./hashcrack --help
+go build -o hashcrack -ldflags="-s -w"
 ```
-
-## 🚀 Quick Start
-
-```bash
-./hashcrack -h
-```
-
-## 🧪 Examples
-
-```bash
-# Example 1
-./hashcrack status
-
-# Example 2  
-./hashcrack --verbose
-
-# Example 3
-./hashcrack help
-```
-
-## 📊 Project Info
-
-| Property | Value |
-|----------|-------|
-| Language | Go 🟢 |
-| Status | Active |
-| License | MIT |
-
-## 🤝 Contributing
-
-Contributions welcome! Open an issue or PR.
-
-## 📄 License
-
-MIT © **simplestar-992**
 
 ---
 
-<p align="center">
-  <img src="https://img.shields.io/badge/hashcrack-orange-orange?style=for-the-badge" alt=""/>
-  <img src="https://img.shields.io/github/v/tag/simplestar-992/hashcrack?style=for-the-badge" alt=""/>
-  <img src="https://img.shields.io/github/license/simplestar-992/hashcrack?style=for-the-badge" alt=""/>
-</p>
+## Usage
 
-<p align="center">
-  Built with ❤️ by <a href="https://github.com/simplestar-992">simplestar-992</a>
-</p>
+```bash
+# Identify hash type
+./hashcrack identify "5f4dcc3b5aa765d61d8327deb882cf99"
+
+# Verify password against hash
+./hashcrack verify "5f4dcc3b5aa765d61d8327deb882cf99" "password"
+
+# Check with wordlist
+./hashcrack wordlist -hash "hash.txt" -wordlist "rockyou.txt"
+
+# Hash a password
+./hashcrack hash "mypassword" -type md5
+```
+
+---
+
+## Supported Hash Types
+
+| Category | Types |
+|----------|-------|
+| **MD5 Family** | MD5, MD4, MD2, MD5(md5), Double MD5 |
+| **SHA Family** | SHA1, SHA256, SHA384, SHA512 |
+| **Bcrypt** | bcrypt, bcrypt_sha256 |
+| **Scrypt** | scrypt, PBKDF2 |
+| **NTLM** | NTLM, NTLMv2 |
+| **MySQL** | MySQL323, MySQLSHA1 |
+
+---
+
+## Examples
+
+```bash
+# Identify unknown hash
+./hashcrack identify "2fc5a684dce1773774a1bb71f2e2a8b2"
+
+# Check if admin password is in breach database
+./hashcrack verify -hash "$1$xyz$abcdef" -wordlist common.txt
+
+# Batch processing
+cat hashes.txt | while read hash; do ./hashcrack identify "$hash"; done
+```
+
+---
+
+## License
+
+MIT © 2024 [simplestar-992](https://github.com/simplestar-992)
